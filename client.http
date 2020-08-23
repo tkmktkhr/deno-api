@@ -1,0 +1,27 @@
+GET http://localhost:8000/
+
+
+###
+GET http://localhost:8000/vocabularies
+
+###
+GET http://localhost:8000/vocabularies/6357be79-79aa-46de-a251-65cf8dd343c6
+
+###
+POST http://localhost:8000/vocabularies/
+content-type: application/json
+
+{
+  "title": "Petting 🦕"
+}
+
+###
+PUT http://localhost:8000/vocabularies/6357be79-79aa-46de-a251-65cf8dd343c6
+content-type: application/json
+
+{
+  "done": true
+}
+
+###
+DELETE http://localhost:8000/vocabularies/5dcff277-b58e-41cf-b577-bc150e71e03d
