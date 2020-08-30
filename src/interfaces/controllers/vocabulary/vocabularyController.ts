@@ -3,6 +3,7 @@ import { Vocabulary } from "../../../entities/vocabulary.ts";
 import { FindVocabularyUseCase } from "../../../usecases/vocabulary/FindVocabularyUseCase.ts";
 import { VocabularyRepository } from "../../databases/vocabulary/VocabularyRepositoryimple.ts";
 import { IVocabularyRepository } from "../../repositories/vocabularies/IVocabularyRepository.ts";
+import { Response } from "../../responses/response.ts";
 
 export class VocabularyController {
   private vocabularyRepository: IVocabularyRepository;
@@ -11,14 +12,14 @@ export class VocabularyController {
     this.vocabularyRepository = new VocabularyRepository();
   }
 
-  async findAllVocabularies(): Promise<Vocabulary[]> {
+  async findAllVocabularies(): Promise<Response<Vocabulary[]>> {
     console.log("Started Controller.");
     const usecase = new FindVocabularyUseCase(this.vocabularyRepository);
     const result = await usecase.findAll();
     return result;
   }
 
-  async findVocabulary(ctx: RouterContext): Promise<Vocabulary> {
+  async findVocabulary(ctx: RouterContext): Promise<Response<Vocabulary>> {
     // Request params format.
     const id = ctx.params.id!;
     // TODO / Error handling for Validation

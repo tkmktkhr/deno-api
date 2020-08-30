@@ -13,7 +13,7 @@ export class FindVocabularyUseCase {
     return this.findVocabularyRepository.findAll();
   }
 
-  find(randomId: number) {
+  find(randomId: number): Promise<Response<Vocabulary>> {
     return this.findVocabularyRepository.find(randomId);
   }
 }
