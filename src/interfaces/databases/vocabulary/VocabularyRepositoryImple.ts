@@ -5,22 +5,18 @@ import { Vocabulary } from "../../../entities/vocabulary.ts";
 
 export class VocabularyRepository implements IVocabularyRepository {
   async find(id: number): Promise<Vocabulary> {
-    //   const vocabularies = await this.findAll();
-    //   const targetVocabulary = toMap(vocabularies).get(id);
-    // if (!targetVocabulary) {
-    // TODO / Error Handler
-    // return [undefined, new Error("Cannnot find item.!!!!")];
-    // }
-    //   return targetVocabulary;
-
-    return new Vocabulary(
-      1,
-      "abc",
-      "nothing",
-      "abc means nothing.",
-      0,
-      0,
-    );
+    // const localData = await Deno.readFile(FileCode.FILE_PATH)
+    // const decoder = new TextDecoder();
+    // const allVocabularies = JSON.parse(decoder.decode(localData))
+    const vocabularies = await this.findAll();
+    const targetVocabulary = toMap(vocabularies).get(id);
+    console.log(targetVocabulary);
+    if (!targetVocabulary) {
+      // TODO / Error Handler
+      // return [undefined, new Error("Cannnot find item.!!!!")];
+      throw new Error();
+    }
+    return targetVocabulary;
   }
 
   async findAll(): Promise<Vocabulary[]> {

@@ -7,11 +7,11 @@ export class FindVocabularyUseCase {
     this.findVocabularyRepository = findVocabularyRepository;
   }
 
-  find(randomId: number) {
-    return this.findVocabularyRepository.find(randomId);
-  }
-
   findAll() {
     return this.findVocabularyRepository.findAll();
+  }
+
+  find(randomId: number) {
+    return this.findVocabularyRepository.find(randomId);
   }
 }
