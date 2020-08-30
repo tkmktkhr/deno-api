@@ -18,7 +18,11 @@ export class VocabularyController {
     return result;
   }
 
-  async findVocabulary(id: string): Promise<Vocabulary> {
+  async findVocabulary(ctx: RouterContext): Promise<Vocabulary> {
+    // Request params format.
+    const id = ctx.params.id!;
+    // TODO / Error handling for Validation
+    if (!id || typeof +id !== "number") throw new Error("BAD REQUEST");
     const usecase = new FindVocabularyUseCase(this.vocabularyRepository);
     const result = await usecase.find(+id);
     return result;

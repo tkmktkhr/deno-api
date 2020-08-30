@@ -20,9 +20,8 @@ router.get(
   "/vocabularies/:id",
   async (context: RouterContext) => {
     // controller
-    console.log(context.params);
-    const targetId: string = context.params.id as string;
-    const result = await vocabularyController.findVocabulary(targetId);
+    console.log(context.params.id);
+    const result = await vocabularyController.findVocabulary(context);
     // const result = await vocabularyController.findAllVocabularies();
     console.log("Ended process here is Router");
     console.log(result);
